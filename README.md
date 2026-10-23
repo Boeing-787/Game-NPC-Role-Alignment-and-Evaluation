@@ -83,4 +83,3 @@ python eval/scripts/generate.py \
   --output-dir "$RESULT_DIR/open_eval_finetuned"
 ~~~
 
-不要提交模型权重、训练输出、评测输出、API 密钥或上游原始游戏数据。
