@@ -38,7 +38,7 @@ def validate(rows: list[dict]) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model-id", required=True, help="本地基座模型目录，例如 /data/share/Qwen3-4B")
+    parser.add_argument("--model-id", required=True, help="基座模型目录或 Hugging Face 模型 ID，例如 Qwen/Qwen3-4B")
     parser.add_argument("--variant", required=True, choices=("base", "finetuned"))
     parser.add_argument("--adapter", help="variant=finetuned 时必填的 LoRA adapter 目录")
     parser.add_argument("--test-file", type=Path, default=Path("data/v5/test_reference_eval.jsonl"))

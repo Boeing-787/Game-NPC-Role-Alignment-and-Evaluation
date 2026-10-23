@@ -1,7 +1,7 @@
 # 第二批清洗语料（543 条候选、按 group 划分为 471 条训练 / 72 条验证）的独立实验配置。
 # 输出目录独立于第一轮 outputs/zhongli_lora，避免覆盖既有 adapter 和训练记录。
 project_name: zhongli_npc_lora_v2
-model_name: /data/share/Qwen3-14B
+model_name: Qwen/Qwen3-14B
 model_revision: null
 role: 钟离
 system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"

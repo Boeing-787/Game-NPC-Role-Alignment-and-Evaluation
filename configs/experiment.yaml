@@ -1,7 +1,7 @@
 # 同一 system_prompt 用于训练和 Before/After 推理，避免条件不一致。
 project_name: zhongli_npc_lora
 # 本地共享模型；训练和 Before/After 推理均从此路径加载，不下载 Hugging Face 权重。
-model_name: /data/share/Qwen3-14B
+model_name: Qwen/Qwen3-14B
 # 如需严格锁定模型权重，请把 hf-model revision commit hash 写在此处（可留空）。
 model_revision: null
 role: 钟离

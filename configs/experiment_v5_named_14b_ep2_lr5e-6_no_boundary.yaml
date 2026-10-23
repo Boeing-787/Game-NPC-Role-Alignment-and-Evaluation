@@ -1,7 +1,7 @@
 # Controlled ablation: identical to the v5 main experiment except that all
 # manual Boundary training/validation rows are removed.
 project_name: zhongli_npc_lora_v5_named_4b_ep2_lr5e-6_no_boundary
-model_name: /data/share/Qwen3-14B
+model_name: Qwen/Qwen3-14B
 revision: null
 role: 钟离
 system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"

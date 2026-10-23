@@ -2,7 +2,7 @@
 # Keep data, seed, prompt, and optimization settings aligned with the 14B
 # run; only the base model and artifact locations differ.
 project_name: zhongli_npc_lora_v3_boundary_4b
-model_name: /data/share/Qwen3-4B
+model_name: Qwen/Qwen3-4B
 model_revision: null
 role: 钟离
 system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"

@@ -13,11 +13,11 @@
     "split": "Official examples are split by quest group into 70/15/15 train/val/test_reference; a quest never crosses splits."
   },
   "inputs": {
-    "corpus": "/data/250010081/zze/game_sft/data/game-text-data/corpus/genshin/quests_chs.jsonl",
-    "audio_input": "/data/250010081/zze/game_sft/data/Genshin-Impact-NPC-Audio-Texts-Dataset/lines.json",
-    "npc_config": "/data/250010081/zze/game_sft/data/animegamedata2/ExcelBinOutput/NpcExcelConfigData.json",
-    "text_map": "/data/250010081/zze/game_sft/data/animegamedata2/TextMap/TextMap_MediumCHS.json",
-    "boundary_input": "/data/250010081/zze/game_sft/data/boundary/boundary_v4.REVIEW.jsonl"
+    "corpus": "<external quest corpus>",
+    "audio_input": "<external character voice corpus>",
+    "npc_config": "<external NPC configuration>",
+    "text_map": "<external text map>",
+    "boundary_input": "<external reviewed boundary data>"
   },
   "speaker_name_map_size": 14032,
   "archived_existing_files": [
@@ -32,12 +32,12 @@
     "build_audit.json"
   ],
   "parameters": {
-    "corpus": "/data/250010081/zze/game_sft/data/game-text-data/corpus/genshin/quests_chs.jsonl",
-    "audio_input": "/data/250010081/zze/game_sft/data/Genshin-Impact-NPC-Audio-Texts-Dataset/lines.json",
-    "npc_config": "/data/250010081/zze/game_sft/data/animegamedata2/ExcelBinOutput/NpcExcelConfigData.json",
-    "text_map": "/data/250010081/zze/game_sft/data/animegamedata2/TextMap/TextMap_MediumCHS.json",
-    "boundary_input": "/data/250010081/zze/game_sft/data/boundary/boundary_v4.REVIEW.jsonl",
-    "output_dir": "/data/250010081/zze/game_sft/data/v5",
+    "corpus": "<external quest corpus>",
+    "audio_input": "<external character voice corpus>",
+    "npc_config": "<external NPC configuration>",
+    "text_map": "<external text map>",
+    "boundary_input": "<external reviewed boundary data>",
+    "output_dir": "<public dataset output>",
     "npc_role_id": 10232,
     "max_history_nodes": 3,
     "min_target_chars": 12,
@@ -48,7 +48,7 @@
     "boundary_per_subtype": 3,
     "max_per_quest_category": 3,
     "seed": 20261021,
-    "archive_dir": "/data/250010081/zze/game_sft/data/archive/v5_before_named_speaker_rebuild"
+    "archive_dir": "<local archive directory>"
   },
   "candidate_categories": {
     "lore": 117,
