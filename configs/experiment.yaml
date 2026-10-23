@@ -1,0 +1,33 @@
+# 同一 system_prompt 用于训练和 Before/After 推理，避免条件不一致。
+project_name: zhongli_npc_lora
+# 本地共享模型；训练和 Before/After 推理均从此路径加载，不下载 Hugging Face 权重。
+model_name: /data/share/Qwen3-14B
+# 如需严格锁定模型权重，请把 hf-model revision commit hash 写在此处（可留空）。
+model_revision: null
+role: 钟离
+system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"
+seed: 42
+train_file: data/train.jsonl
+val_file: data/val.jsonl
+test_file: data/test.jsonl
+output_dir: outputs/zhongli_lora
+# 第一轮实验的评测产物目录；与 v2 结果隔离。
+results_dir: results/zhongli_lora
+max_length: 768
+max_new_tokens: 160
+num_train_epochs: 2
+learning_rate: 0.00008
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+per_device_eval_batch_size: 1
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj

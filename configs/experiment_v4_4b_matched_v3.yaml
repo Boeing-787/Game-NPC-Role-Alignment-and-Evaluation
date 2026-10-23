@@ -1,0 +1,31 @@
+# Controlled v4-data ablation: identical model and training hyperparameters to
+# experiment_v3_boundary_4b.yaml.  Only the v4 dataset and artifact paths vary.
+project_name: zhongli_npc_lora_v4_4b_matched_v3
+model_name: /data/share/Qwen3-4B
+model_revision: null
+role: 钟离
+system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"
+seed: 42
+train_file: data/v4/train.jsonl
+val_file: data/v4/val.jsonl
+test_file: eval/data/eval_single.jsonl
+output_dir: outputs/zhongli_lora_v4_4b_matched_v3
+results_dir: results/zhongli_lora_v4_4b_matched_v3
+max_length: 1024
+max_new_tokens: 160
+num_train_epochs: 2
+learning_rate: 0.00003
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+per_device_eval_batch_size: 1
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj

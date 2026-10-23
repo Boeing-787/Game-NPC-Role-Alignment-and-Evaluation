@@ -1,0 +1,45 @@
+# Controlled ablation: identical to the v5 main experiment except that all
+# manual Boundary training/validation rows are removed.
+project_name: zhongli_npc_lora_v5_named_4b_ep2_lr5e-6_no_boundary
+model_name: /data/share/Qwen3-14B
+revision: null
+role: 钟离
+system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"
+seed: 42
+train_file: data/v5_no_boundary/train.jsonl
+val_file: data/v5_no_boundary/val.jsonl
+test_file: eval/data/eval_single.jsonl
+output_dir: outputs/zhongli_lora_v5_named_14b_ep2_lr5e-6_no_boundary
+results_dir: results/zhongli_lora_v5_named_14b_ep2_lr5e-6_no_boundary
+max_length: 1024
+max_new_tokens: 96
+num_train_epochs: 2
+learning_rate: 0.000005
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+per_device_eval_batch_size: 1
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+logging_steps: 1
+eval_strategy: epoch
+save_strategy: epoch
+save_total_limit: 2
+load_best_model_at_end: true
+metric_for_best_model: eval_loss
+greater_is_better: false
+bf16: true
+tf32: true
+gradient_checkpointing: true
+optim: adamw_torch
+warmup_ratio: 0.05
+weight_decay: 0.0
+report_to: none

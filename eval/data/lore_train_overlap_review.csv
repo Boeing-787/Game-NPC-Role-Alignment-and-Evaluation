@@ -1,0 +1,11 @@
+﻿case_id,nearest_train_id,max_lexical_similarity,human_semantic_review,same_topic_not_same_wording
+LO01,ZL043,0.192,待复核,是（非独立新知识）
+LO02,ZLCTX00584,0.235,待复核,是（非独立新知识）
+LO03,ZLCTX00571,0.258,待复核,是（非独立新知识）
+LO04,ZLCTX00584,0.192,待复核,是（非独立新知识）
+LO05,ZL041,0.235,待复核,是（非独立新知识）
+LO06,ZLCTX00292,0.235,待复核,是（非独立新知识）
+LO07,ZLCTX00033,0.174,待复核,是（非独立新知识）
+LO08,ZLCTX00584,0.196,待复核,是（非独立新知识）
+LO09,ZLCTX00330,0.198,待复核,是（非独立新知识）
+LO10,ZLCTX00180,0.175,待复核,是（非独立新知识）

@@ -1,0 +1,34 @@
+# Python / IDE
+.venv/
+__pycache__/
+*.py[cod]
+.vscode/
+.idea/
+
+# 不公开训练、推理与模型产物
+outputs/
+results/
+report/
+logs/
+*.log
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# 不公开历史脚本
+scripts/old/
+
+# 不公开原始与中间数据
+data/animegamedata2/
+data/game-text-data/
+data/Genshin-Impact-NPC-Audio-Texts-Dataset/
+data/GenshinDialog/
+data/archive/
+data/v5_experiment_bundle/
+data/**/*.REVIEW.jsonl
+
+# 私密配置
+.env
+.env.*
+*.key

@@ -1,0 +1,25 @@
+# Controlled v5 named-context sweep. Only epoch count and learning rate vary;
+# data, seed, LoRA settings, system prompt, decoding, and judge are fixed.
+base_config: configs/experiment_v5_named_4b_ep2_lr5e-6.yaml
+
+# Six runs: the previous 2 epoch / 3e-5 setting already caused severe output
+# degradation, so it is deliberately excluded. This is a focused ablation,
+# not a broad search over known-harmful settings.
+grid:
+  epochs: [1, 2]
+  learning_rates: [0.000002, 0.000005, 0.00001]
+  seeds: [42]
+
+runner:
+  # New roots prevent mixing this sweep with previous v5 or older judge runs.
+  outputs_root: outputs/ablation/zhongli_lora_v5_named_4b_epoch_lr_sweep_v1
+  results_root: results/ablation/zhongli_lora_v5_named_4b_epoch_lr_sweep_v1
+  reference_test_file: data/v5/test_reference_eval.jsonl
+  core_test_file: eval/data/eval_single.jsonl
+  judge_model: deepseek-flash
+  # Fixed to the current v5 generation budget for every grid point.
+  reference_max_new_tokens: 96
+  core_max_new_tokens: 96
+  # The 28 core questions remain a final human evaluation set. Do not run it
+  # over every parameter combination; use --generate-core only after choice.
+  generate_core_by_default: false

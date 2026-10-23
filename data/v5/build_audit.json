@@ -1,0 +1,149 @@
+{
+  "builder": "scripts/build_zhongli_v5.py",
+  "principle": {
+    "official_data": "Explicit Zhongli NPC role 10232 nodes from AnimeGameData2-derived CHS quests plus official Zhongli profile voice text; no v3/v4 curated data is read.",
+    "speaker_resolution": "Every non-Zhongli quest context speaker must resolve from node.speaker, PLAYER/BLACK_SCREEN role type, or TALK_ROLE_NPC role.id -> NpcExcelConfigData.id -> TextMap_MediumCHS. Unresolved speakers are excluded; no generic '某人' label is emitted.",
+    "dimensions": [
+      "daily",
+      "lore",
+      "values",
+      "boundary"
+    ],
+    "boundary": "Manual Boundary scenarios are retained as human-authored training/validation data and excluded from reference-answer test.",
+    "split": "Official examples are split by quest group into 70/15/15 train/val/test_reference; a quest never crosses splits."
+  },
+  "inputs": {
+    "corpus": "/data/250010081/zze/game_sft/data/game-text-data/corpus/genshin/quests_chs.jsonl",
+    "audio_input": "/data/250010081/zze/game_sft/data/Genshin-Impact-NPC-Audio-Texts-Dataset/lines.json",
+    "npc_config": "/data/250010081/zze/game_sft/data/animegamedata2/ExcelBinOutput/NpcExcelConfigData.json",
+    "text_map": "/data/250010081/zze/game_sft/data/animegamedata2/TextMap/TextMap_MediumCHS.json",
+    "boundary_input": "/data/250010081/zze/game_sft/data/boundary/boundary_v4.REVIEW.jsonl"
+  },
+  "speaker_name_map_size": 14032,
+  "archived_existing_files": [
+    "curated.REVIEW.jsonl",
+    "audio.REVIEW.jsonl",
+    "curated.jsonl",
+    "train.jsonl",
+    "val.jsonl",
+    "test_reference.jsonl",
+    "test_reference_eval.jsonl",
+    "sources.csv",
+    "build_audit.json"
+  ],
+  "parameters": {
+    "corpus": "/data/250010081/zze/game_sft/data/game-text-data/corpus/genshin/quests_chs.jsonl",
+    "audio_input": "/data/250010081/zze/game_sft/data/Genshin-Impact-NPC-Audio-Texts-Dataset/lines.json",
+    "npc_config": "/data/250010081/zze/game_sft/data/animegamedata2/ExcelBinOutput/NpcExcelConfigData.json",
+    "text_map": "/data/250010081/zze/game_sft/data/animegamedata2/TextMap/TextMap_MediumCHS.json",
+    "boundary_input": "/data/250010081/zze/game_sft/data/boundary/boundary_v4.REVIEW.jsonl",
+    "output_dir": "/data/250010081/zze/game_sft/data/v5",
+    "npc_role_id": 10232,
+    "max_history_nodes": 3,
+    "min_target_chars": 12,
+    "max_target_chars": 240,
+    "daily": 60,
+    "lore": 60,
+    "values": 24,
+    "boundary_per_subtype": 3,
+    "max_per_quest_category": 3,
+    "seed": 20261021,
+    "archive_dir": "/data/250010081/zze/game_sft/data/archive/v5_before_named_speaker_rebuild"
+  },
+  "candidate_categories": {
+    "lore": 117,
+    "daily": 178,
+    "values": 24
+  },
+  "task_dialogue_selected": {
+    "daily": 60,
+    "lore": 60,
+    "values": 22
+  },
+  "voice_selected": {
+    "daily": 21,
+    "lore": 6,
+    "values": 11
+  },
+  "official_selected": {
+    "daily": 81,
+    "lore": 66,
+    "values": 33
+  },
+  "boundary_selected": {
+    "boundary:cross_world": 3,
+    "boundary:fabricated_lore": 3,
+    "boundary:false_identity": 3,
+    "boundary:future_uncertain": 3,
+    "boundary:harmful_refusal": 3,
+    "boundary:multi_turn": 3,
+    "boundary:prompt_override": 3,
+    "boundary:safe_control": 3
+  },
+  "splits": {
+    "train": {
+      "rows": 146,
+      "categories": {
+        "daily": 57,
+        "values": 23,
+        "lore": 46,
+        "boundary": 20
+      },
+      "groups": 68
+    },
+    "val": {
+      "rows": 31,
+      "categories": {
+        "daily": 12,
+        "values": 5,
+        "lore": 10,
+        "boundary": 4
+      },
+      "groups": 15
+    },
+    "test_reference": {
+      "rows": 27,
+      "categories": {
+        "daily": 12,
+        "lore": 10,
+        "values": 5
+      },
+      "groups": 13
+    }
+  },
+  "group_overlap": {
+    "train_val": [],
+    "train_test_reference": [],
+    "val_test_reference": []
+  },
+  "extraction_rejections": {
+    "target_length_out_of_range": 234,
+    "invalid_role_sequence": 180,
+    "history_ends_in_zhongli": 362,
+    "ambiguous_predecessor": 103,
+    "no_unambiguous_history": 71,
+    "history_unresolved_or_empty": 7,
+    "target_unresolved_or_empty": 6
+  },
+  "sampling_rejections": {
+    "daily_quest_cap": 42,
+    "duplicate_target": 1,
+    "lore_quest_cap": 17,
+    "values_quest_cap": 2,
+    "values_shortfall": 2
+  },
+  "voice_audit": {
+    "excluded_non_conversational_voice": 12
+  },
+  "boundary_audit": {
+    "boundary_available_cross_world": 8,
+    "boundary_available_fabricated_lore": 8,
+    "boundary_available_false_identity": 7,
+    "boundary_available_future_uncertain": 7,
+    "boundary_available_harmful_refusal": 5,
+    "boundary_available_multi_turn": 6,
+    "boundary_available_prompt_override": 7,
+    "boundary_available_safe_control": 8
+  },
+  "warning": "test_reference contains only official quote pairs. Do not use it to tune epochs, learning rate, decoding, prompts, or data selection."
+}

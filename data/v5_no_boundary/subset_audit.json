@@ -1,0 +1,31 @@
+{
+  "source": "data/v5",
+  "rule": "drop rows whose category is boundary",
+  "train": {
+    "before": 146,
+    "after": 126,
+    "removed_boundary": 20,
+    "category_counts": {
+      "daily": 57,
+      "values": 23,
+      "lore": 46
+    },
+    "retained_content_sha256": "ae12e30ca0412688b1be5faf6adc59d28ce3f2518b6371b20a8027131e157ebb"
+  },
+  "val": {
+    "before": 31,
+    "after": 27,
+    "removed_boundary": 4,
+    "category_counts": {
+      "daily": 12,
+      "values": 5,
+      "lore": 10
+    },
+    "retained_content_sha256": "3de7be541b80c1b873f8fcf93457277e22b930c3bbc190c108a8029b37fa84b0"
+  },
+  "reference_test": {
+    "path": "data/v5/test_reference_eval.jsonl (shared, unchanged)",
+    "count": 27,
+    "content_sha256": "e34f46fd4469564024b141c42d2f49a5ecf4621f1b08fc624bfe5e750d35063c"
+  }
+}

@@ -1,0 +1,25 @@
+# Data/output isolation for the future Qwen3-4B v4 long-context experiment.
+project_name: zhongli_npc_lora_v4_4b
+model_name: /data/share/Qwen3-4B
+model_revision: null
+role: 钟离
+system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"
+seed: 42
+train_file: data/v4/train.jsonl
+val_file: data/v4/val.jsonl
+test_file: eval/data/eval_single.jsonl
+output_dir: outputs/zhongli_lora_v4_4b
+results_dir: results/zhongli_lora_v4_4b
+max_length: 1024
+max_new_tokens: 160
+num_train_epochs: 2
+learning_rate: 0.00002
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+per_device_eval_batch_size: 1
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - v_proj

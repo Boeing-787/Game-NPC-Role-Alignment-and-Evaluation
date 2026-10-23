@@ -1,0 +1,33 @@
+# 第二批清洗语料（543 条候选、按 group 划分为 471 条训练 / 72 条验证）的独立实验配置。
+# 输出目录独立于第一轮 outputs/zhongli_lora，避免覆盖既有 adapter 和训练记录。
+project_name: zhongli_npc_lora_v2
+model_name: /data/share/Qwen3-14B
+model_revision: null
+role: 钟离
+system_prompt: "你正在扮演《原神》中的钟离。请依据角色已有设定与说话方式自然回应；不确定的设定不要编造。"
+seed: 42
+train_file: data/train.jsonl
+val_file: data/val.jsonl
+test_file: data/test.jsonl
+output_dir: outputs/zhongli_lora_v2
+# 生成结果、盲评表和图表均写入本目录，不覆盖第一轮评测。
+results_dir: results/zhongli_lora_v2
+max_length: 768
+max_new_tokens: 160
+num_train_epochs: 2
+# 第一轮小语料使用 8e-5 后出现退化；第二轮改为较保守的学习率。
+learning_rate: 0.00003
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+per_device_eval_batch_size: 1
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
